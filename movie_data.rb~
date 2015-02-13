@@ -218,7 +218,7 @@ class MovieData
 		    u = info[0]
 		    m = info[1]
 		    r = info[2]
-		    mt.save(u,m,r,final_prediction(u,m)) #send user, movie, rating, and predicted rating for each line to store in 2D array
+		    mt.save(u,m,r,final_prediction(u,m))
 		    i += 1 
             else
             	break

@@ -1,0 +1,56 @@
+
+class MovieTest
+  
+  def initialize
+    @data = []
+    @mean = nil
+    @stddev = nil
+    @rms = nil
+  end
+  
+  def save(u,m,r,p)
+    @data << [u,m,r.to_f,p.to_f]
+  end
+  
+  def mean
+    if @mean.nil?
+	    total = 0
+	    @data.each do |point|
+	      total += (point[2] - point[3]).abs
+	    end
+	    @mean = total / @data.length
+    end
+    return @mean
+  end  
+
+  def stddev
+    total = 0
+    if @stddev.nil?
+	    @data.each do |point|
+	      diff = ((point[2] - point[3]).abs - @mean)
+	      total += (diff * diff) 
+	    end
+	    @stddev = Math.sqrt(total / @data.length)
+    end
+    return @stddev
+  end
+
+
+  def rms
+    total = 0
+    if @rms.nil?
+	    @data.each do |point|
+	      diff = (point[2] - point[3])
+	      total += (diff * diff) 
+	    end
+	    @rms = Math.sqrt(total / @data.length)
+    end
+    return @rms
+  end
+
+
+  def to_a
+    return @data
+  end
+
+end
